@@ -22,8 +22,8 @@ class AppFixtures extends Fixture
          * Un user pour l'authentification JWT
          */
         $user = new User();
-        $user->setUsername('Jojau');
-        $user->setPassword($this->passwordHasher->hashPassword($user, "jojo1234"));
+        $user->setUsername('user');
+        $user->setPassword($this->passwordHasher->hashPassword($user, "password"));
         $manager->persist($user);
 
         /**
