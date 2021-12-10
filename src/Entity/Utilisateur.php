@@ -7,11 +7,14 @@ use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['readUtilisateur']]
+)]
 class Utilisateur
 {
     /**
@@ -24,11 +27,13 @@ class Utilisateur
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups("readUtilisateur")]
     private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity=Video::class)
      */
+    #[Groups("readUtilisateur")]
     private $videos;
 
     public function __construct()

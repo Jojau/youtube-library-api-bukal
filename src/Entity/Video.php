@@ -5,22 +5,27 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['readUtilisateur']]
+)]
 class Video
 {
     /**
      * @ORM\Id
      * @ORM\Column(type="string")
      */
+    #[Groups("readUtilisateur")]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups("readUtilisateur")]
     private $title;
 
     public function getId(): ?string
