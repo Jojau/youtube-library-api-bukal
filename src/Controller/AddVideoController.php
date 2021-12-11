@@ -8,7 +8,7 @@ use App\Repository\VideoRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class RemoveVideoController extends AbstractController
+class AddVideoController extends AbstractController
 {
     public function __construct(private VideoRepository $videoRepository, private UtilisateurRepository $utilisateurRepository, private ManagerRegistry $doctrine)
     {
@@ -21,7 +21,7 @@ class RemoveVideoController extends AbstractController
 
         $video = $this->videoRepository->find($videoId);
         $utilisateur = $this->utilisateurRepository->find($id);
-        $utilisateur->removeVideo($video);
+        $utilisateur->addVideo($video);
         $entityManager->persist($utilisateur);
         $entityManager->flush();
 

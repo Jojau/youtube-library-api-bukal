@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\AddVideoController;
 use App\Controller\RemoveVideoController;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -23,6 +24,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
             "method" => 'GET',
             'path' => 'utilisateurs/{id}/removeVideo/{videoId}',
             'controller' => RemoveVideoController::class
+        ],
+        'addVideo' => [
+            "method" => 'GET',
+            'path' => 'utilisateurs/{id}/addVideo/{videoId}',
+            'controller' => AddVideoController::class
         ]
     ]
 )]
